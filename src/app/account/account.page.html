@@ -1,0 +1,81 @@
+<ion-content>
+    <div id="cover-photo" style="background-image: url(https://images.pexels.com/photos/268941/pexels-photo-268941.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);">
+        <div class="big" style="padding: 5px 0 0 10px;">
+            <span (click)="close()">
+                <ion-icon name="close-outline"></ion-icon>
+            </span>
+        </div>
+
+        <br>
+
+        <div class="center">
+            <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg" class="profile-img">
+            <br><br>
+            <strong class="text-light">
+                <h3>{{user.name}}</h3>
+                <h4>{{user.employee_id ? user.employee_id : 'Employee ID Not Available'}}</h4>
+                <h4>{{user.position}}</h4>
+            </strong>
+        </div>
+    </div>
+
+    <div class="px-3 details">
+        <ion-card class="p-3 smaller">
+            <span class="text-dark">
+                <strong class="primary-text">Address/es</strong> 
+                <ul>
+                    <li>{{user.address.address}} {{user.address.zipcode_id.area}} {{user.address.zipcode_id.city_id.city}} {{user.address.zipcode_id.city_id.province_id.province}}</li>
+                </ul>
+                
+                <strong class="primary-text">Civil Status</strong> 
+                <ul>
+                    <li>{{user.department_id ? user.department_id.name : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">Employment Type</strong> 
+                <ul>
+                    <li>{{user.employment_type_id ? user.employment_type_id.name : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">Civil Status</strong> 
+                <ul>
+                    <li>{{user.civil_status_id ? user.civil_status_id.name : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">Civil Status</strong> 
+                <ul>
+                    <li>{{user.civil_status_id ? user.civil_status_id.name : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">SSS Number</strong> 
+                <ul>
+                    <li>{{user.sss_number ? user.sss_number : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">Philhealth Number</strong> 
+                <ul>
+                    <li>{{user.philhealth_number ? user.philhealth_number : 'N/A'}}</li>
+                </ul>
+                
+                <strong class="primary-text">Pag-ibig Number</strong> 
+                <ul>
+                    <li>{{user.pagibig_number ? user.pagibig_number : 'N/A'}}</li>
+                </ul>
+            </span>
+        </ion-card>
+
+        <ion-card class="smaller">
+            <ion-list>
+                <ion-item button (click)="changePassword()">
+                    <ion-icon name="key-outline" slot="start"></ion-icon>
+                    <ion-label>Change Password</ion-label>
+                </ion-item>
+                <ion-item button (click)="logout()">
+                    <ion-icon name="log-out-outline" slot="start"></ion-icon>
+                    <ion-label>Logout</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card>
+    </div>
+    
+</ion-content>

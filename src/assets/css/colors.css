@@ -1,0 +1,60 @@
+.transparent-bg {
+	background-color: rgba(0, 0, 0, 0) !important;
+}
+.primary-bg {
+	background-color: #2a77cf !important;
+}
+.secondary-bg {
+	background-color: #123358 !important;
+}
+.tertiary-bg {
+	background-color: #9dc1eb !important;
+}
+.success-bg {
+	background-color: #61C0BB !important;
+}
+.warning-bg {
+	background-color: #ffc409 !important;
+}
+.danger-bg {
+	background-color: #cd5c5c !important;
+}
+.dark-bg {
+	background-color: #242422 !important;
+}
+.medium-bg {
+	background-color: #92949c !important;
+}
+.light-bg {
+	background-color: #f8f9fa !important;
+}
+.secondary-text {
+	color: #123358 !important;
+}
+.primary-text {
+	color: #2a77cf !important;
+}
+.tertiary-text {
+	color: #9dc1eb !important;
+}
+.success-text {
+	color: #61C0BB !important;
+}
+.warning-text {
+	color: #ffc409 !important;
+}
+.danger-text {
+	color: #cd5c5c !important;
+}
+.dark-text{
+	color: #242422 !important;
+}
+.medium-text {
+	color: #92949c !important;
+}
+.light-text {
+	color: #f8f9fa !important;
+}
+.menu-bg {
+	background-color: #eaeff6 !important;
+}

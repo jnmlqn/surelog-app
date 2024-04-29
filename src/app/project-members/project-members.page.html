@@ -1,0 +1,15 @@
+<ion-content>
+    <div class="big" style="padding: 5px 0 0 10px;">
+        <span (click)="close()">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h1><strong>Select Project Member</strong></h1>
+    </div>
+
+    <ion-list>
+        <ion-item button *ngFor="let member of project_members" (click)="recordAttendance(member)">
+            {{member.user_id.name}}
+        </ion-item>
+    </ion-list>
+    
+</ion-content>

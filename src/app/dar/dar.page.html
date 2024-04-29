@@ -1,0 +1,49 @@
+<app-navbar [title]="'Daily Activity Report'">
+    <div content>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button color="secondary" (click)="saveDar()">
+                <ion-icon name="save"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+
+        <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+            <ion-fab-button color="secondary" (click)="checkPermission()">
+                <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+
+        <br>
+
+        <div class="px-4 transparent-bg">
+            <ion-list>
+                <ion-item>
+                    <ion-label position="floating">Date:</ion-label>
+                    <ion-input readonly value="{{(dar.date ? dar.date : time.getDate()) | date: 'longDate'}}"></ion-input>
+                </ion-item>
+
+                <ion-item *ngFor="let field of fields">
+                    <ion-label position="floating">{{field.replace('_', ' ') | titlecase}}:</ion-label>
+                    <ion-textarea [(ngModel)]="dar.data[field]"></ion-textarea>
+                </ion-item>
+            </ion-list>
+
+            <br>
+            <label>Image/s</label>
+            <br>
+            
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngFor="let image of dar.data.images" size="4" class="image-div">
+                        <button (click)="deleteImage(image.id)" *ngIf="!image.sent">
+                            <ion-icon name="close-outline" class="remove-button"></ion-icon>
+                        </button>
+                        <button *ngIf="image.sent">
+                            <ion-icon name="checkmark-outline" class="sent-button"></ion-icon>
+                        </button>
+                        <img src="data:image/png;base64,{{image.image}}" class="image">
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+</app-navbar>

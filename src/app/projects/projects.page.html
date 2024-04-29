@@ -1,0 +1,19 @@
+<app-navbar [title]="'MY PROJECTS'">
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div content>
+        <ion-list>
+            <div class="ion-text-center" *ngIf="projects.length < 1">
+                <br>
+                No Data
+            </div>
+            
+            <ion-item button *ngFor="let project of projects" (click)="viewProject(project)">
+                <ion-badge color="primary" slot="end" *ngIf="isActive(project.id)">Active</ion-badge>
+                <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+                <ion-label>{{project.name}}</ion-label>
+            </ion-item>
+        </ion-list>        
+    </div>
+</app-navbar>

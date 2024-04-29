@@ -1,0 +1,32 @@
+<app-navbar [title]="'LEAVE FILING'">
+    <div content>
+        <br>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button color="secondary" (click)="fileLeave()">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+        
+        <div class="px-3">
+            <strong>Day type: </strong>{{(day_type ? day_type.type : 'Not Set') | titlecase}} <span class="smallest primary-text" (click)="selectDayType()"> (change)</span>
+            <br>
+            <strong>Show per Date: </strong>{{date | date: 'mediumDate'}} <span class="smallest primary-text" (click)="changeDate()"> (change)</span>            
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center" *ngIf="attendance.length < 1">
+            <br>
+            No Data
+        </div>
+
+        <ion-card *ngFor="let att of attendance" (click)="selectAction(att)">            
+            <ion-card-header>
+                <ion-card-title>{{att.name}}</ion-card-title>
+                <ion-card-subtitle *ngIf="att.on_leave == 1" class="text-primary">Whole Day Leave</ion-card-subtitle>
+                <ion-card-subtitle *ngIf="att.on_half_leave == 1" class="text-primary">Half Day Leave</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+    </div>
+</app-navbar>

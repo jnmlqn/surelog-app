@@ -1,0 +1,7 @@
+{
+  "name": "surelog-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

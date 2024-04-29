@@ -1,0 +1,19 @@
+<app-navbar [title]="'SUMMARIES'">
+    <div content>
+        <br>
+
+        <div class="px-3">
+            <strong>Active Project: </strong>{{active_project ? active_project.name : 'N/A (Individual Data)'}} <span class="smallest primary-text" routerDirection="root" [routerLink]="['/projects']"> (change)</span>
+        </div>
+
+        <ion-list>
+            <div class="ion-text-center" *ngIf="locations.length < 1">
+                No Data
+            </div>
+            <ion-item button *ngFor="let location of locations" (click)="viewSummary(location)">
+                <ion-badge color="primary" slot="end" *ngIf="location.sent">Uploaded</ion-badge>
+                {{location.date | date: 'mediumDate'}}
+            </ion-item>
+        </ion-list>
+    </div>
+</app-navbar>

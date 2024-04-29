@@ -1,0 +1,30 @@
+<app-navbar [title]="'OVERTIME FILING'">
+    <div content>
+        <br>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button color="secondary" (click)="fileOt()">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+        
+        <div class="px-3">
+            <strong>Show per Date: </strong>{{date | date: 'mediumDate'}} <span class="smallest primary-text" (click)="changeDate()"> (change)</span>            
+        </div>
+
+        <br>
+
+        <div class="d-flex justify-content-center" *ngIf="overtimes.length < 1">
+            <br>
+            No Data
+        </div>
+
+        <ion-card *ngFor="let ot of overtimes" (click)="selectAction(ot)">            
+            <ion-card-header>
+                <ion-card-title>{{ot.name}}</ion-card-title>
+                <ion-card-subtitle class="text-primary">Time in: {{ot.time_in | date: 'medium'}}</ion-card-subtitle>
+                <ion-card-subtitle class="text-primary">Time out: {{ot.time_out | date: 'medium'}}</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+    </div>
+</app-navbar>

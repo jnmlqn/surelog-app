@@ -1,0 +1,42 @@
+<ion-content>
+    <div id="camera" [hidden]="is_preview">
+        <div class="dark-bg camera-div">
+            <div class="big light-text" style="padding: 5px 10px 0 10px;">
+                <span (click)="close()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </span>
+                <span (click)="flipCamera()" class="right">
+                    <ion-icon name="camera-reverse-outline"></ion-icon>
+                </span>
+            </div>
+
+            <div id="cameraPreview" class="cameraPreview">
+                
+            </div>
+        </div>
+
+        <div class="dark-bg footer-div justify-content-center row py-4">
+            <div style="width: 80px; height: 80px; border-radius: 80px; padding: 10px;" class="medium-bg justify-content-center row col-4" (click)="captureImage()">
+                <div style="width: 60px; height: 60px; border-radius: 80px;" class="light-bg"></div>
+            </div>
+        </div> 
+    </div>
+
+    <div id="preview" [hidden]="!is_preview">
+        <div class="dark-bg center light-text py-4" style="height: 10vh">
+            Image Preview
+        </div>
+        <div class="dark-bg" style="height: 80vh">
+            <img src="data:image/png;base64,{{image}}" style="height: 100vh;">
+        </div>
+
+        <div class="dark-bg" style="height: 10vh; padding: 15px 15px 0 15px; font-size: 50px;">
+            <span (click)="startCamera()" class="text-danger">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </span>
+            <span (click)="saveImage()" class="right text-success">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </span>
+        </div> 
+    </div>
+</ion-content>

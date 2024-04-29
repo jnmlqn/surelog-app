@@ -1,0 +1,24 @@
+<ion-header [translucent]="true" color="primary">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="center">
+                {{title}}
+            </div>
+        </ion-title>
+        <ion-buttons slot="end" (click)="account()">
+            <ion-icon name="person-circle-outline" style="font-size: 1.8em !important;"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollX]="false" [scrollY]="false">
+    <ng-content select="[refresher]"></ng-content>
+
+    <div id="container" style="height: 100vh; overflow: auto;">
+        <ng-content select="[content]"></ng-content>
+        <br><br><br><br>
+    </div>
+</ion-content>

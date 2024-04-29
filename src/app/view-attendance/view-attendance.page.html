@@ -1,0 +1,66 @@
+<ion-content>
+    <div class="big" style="padding: 5px 0 0 10px;">
+        <span (click)="close()">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h1><strong>View Attendance</strong></h1>
+    </div>
+
+    <br>
+
+    <div id="attendance-div" class="px-3">
+
+        <div *ngIf="attendance.time_in !== null">
+            <strong>{{attendance.name}}</strong><br><br>
+            <strong>Time in</strong><br>
+            <div *ngIf="attendance.override_in_reason == null">
+                <img src="data:image/png;base64,{{attendance.time_in_image}}">
+                <br><br>
+            </div>
+
+            <strong>Time in:</strong>  {{attendance.time_in | date: 'medium'}}<br>
+
+            <div *ngIf="attendance.override_in_reason !== null">
+                <strong>Override reason:</strong>  {{attendance.override_in_reason}}
+            </div>
+
+            <div *ngIf="attendance.time_in_location !== null && attendance.time_in_location !== undefined">
+                <strong>Location:</strong>
+                {{attendance.time_in_location.subThoroughfare ? (attendance.time_in_location.subThoroughfare + ' ') : ''}}
+                {{attendance.time_in_location.thoroughfare ? (attendance.time_in_location.thoroughfare + ' ') : ''}}
+                {{attendance.time_in_location.subLocality ? (attendance.time_in_location.subLocality + ' ') : ''}}
+                {{attendance.time_in_location.locality ? (attendance.time_in_location.locality + ' ') : ''}}
+                {{attendance.time_in_location.administrativeArea ? (attendance.time_in_location.administrativeArea + ' ') : ''}}
+                {{attendance.time_in_location.countryName ? (attendance.time_in_location.countryName + ' ') : ''}}
+            </div>
+        </div>
+
+
+        <br><br><br>
+
+
+        <div *ngIf="attendance.time_out !== null">
+            <strong>Time out</strong><br>
+
+            <div *ngIf="attendance.override_out_reason == null">
+                <img src="data:image/png;base64,{{attendance.time_out_image}}">
+                <br><br>
+            </div>
+
+            <strong>Time out:</strong>  {{attendance.time_out | date: 'medium'}}<br>
+            <div *ngIf="attendance.override_out_reason !== null">
+                <strong>Override reason:</strong>  {{attendance.override_out_reason}}
+            </div>
+
+            <div *ngIf="attendance.time_out_location !== null && attendance.time_out_location !== undefined">
+                <strong>Location:</strong>
+                {{attendance.time_out_location.subThoroughfare ? (attendance.time_out_location.subThoroughfare + ' ') : ''}}
+                {{attendance.time_out_location.thoroughfare ? (attendance.time_out_location.thoroughfare + ' ') : ''}}
+                {{attendance.time_out_location.subLocality ? (attendance.time_out_location.subLocality + ' ') : ''}}
+                {{attendance.time_out_location.locality ? (attendance.time_out_location.locality + ' ') : ''}}
+                {{attendance.time_out_location.administrativeArea ? (attendance.time_out_location.administrativeArea + ' ') : ''}}
+                {{attendance.time_out_location.countryName ? (attendance.time_out_location.countryName + ' ') : ''}}
+            </div>
+        </div>
+    </div>
+</ion-content>

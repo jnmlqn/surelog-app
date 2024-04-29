@@ -1,0 +1,31 @@
+<app-navbar [title]="'Current Location'">
+    <div content>
+        <br>
+
+        <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" refresher (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="location == null">
+            <ion-fab-button color="secondary" (click)="initialize()">
+                <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+
+        <div id="location-div" *ngIf="location !== null">
+            <img src="data:image/png;base64,{{location.image}}" width="70%">
+
+            <br><br>
+
+            <div *ngIf="location.geocodeResult !== null && location.geocodeResult !== undefined">
+                <strong>Location:</strong>
+                {{location.geocodeResult.subThoroughfare ? (location.geocodeResult.subThoroughfare + ' ') : ''}}
+                {{location.geocodeResult.thoroughfare ? (location.geocodeResult.thoroughfare + ' ') : ''}}
+                {{location.geocodeResult.subLocality ? (location.geocodeResult.subLocality + ' ') : ''}}
+                {{location.geocodeResult.locality ? (location.geocodeResult.locality + ' ') : ''}}
+                {{location.geocodeResult.administrativeArea ? (location.geocodeResult.administrativeArea + ' ') : ''}}
+                {{location.geocodeResult.countryName ? (location.geocodeResult.countryName + ' ') : ''}}
+            </div>
+        </div>
+    </div>
+</app-navbar>

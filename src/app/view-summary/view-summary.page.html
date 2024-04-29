@@ -1,0 +1,93 @@
+<ion-content>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="secondary" (click)="saveSummary()">
+            <ion-icon name="cloud-upload"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+        <ion-fab-button color="danger" (click)="deleteSummary()">
+            <ion-icon name="trash"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+    <div class="big" style="padding: 5px 0 0 10px;">
+        <span (click)="close()">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h1><strong>View Full Summary</strong></h1>
+    </div>
+
+    <div class="p-4">
+        <div class="py-2 border-bottom">
+            <strong>Project Name: </strong> {{summary.project ? summary.project.name : 'N/A'}}
+        </div>
+
+        <div class="py-2 border-bottom">
+            <strong>Attendance: </strong><br>
+            <ul>
+                <li *ngFor="let att of summary.attendance">
+                    {{att.name}}
+                    <br>
+                    <span class="smallest text-primary">
+                        <span>Time in: {{att.time_in | date: 'medium'}}<br></span>
+                        <span *ngIf="att.override == 1 && att.override_in_reason !== null">Time in override: {{att.override_in_reason}}<br></span>
+                        <span *ngIf="att.time_out !== null">Time out: {{att.time_out | date: 'medium'}}<br></span>
+                        <span *ngIf="att.override == 1 && att.override_out_reason !== null">Time in override: {{att.override_out_reason}}</span>
+                    </span>
+                </li>
+                <li *ngIf="summary.attendance.length < 1"><i class="text-danger">No filed attendance</i></li>
+            </ul>
+        </div>
+
+        <div class="py-2 border-bottom">
+            <strong>Leave Filings: </strong><br>
+            <ul>
+                <li *ngFor="let leave of summary.leaves">
+                    {{leave.name}}
+                    <br>
+                    <span class="smallest text-primary">
+                        <span *ngIf="leave.on_leave == 1">Whole Day Leave</span>
+                        <span *ngIf="leave.on_half_leave == 1">Half Day Leave</span>
+                    </span>
+                </li>
+                <li *ngIf="summary.leaves.length < 1"><i class="text-danger">No filed leave</i></li>
+            </ul>
+        </div>
+
+        <div class="py-2 border-bottom">
+            <strong>Overtime Filings: </strong><br>
+            <ul>
+                <li *ngFor="let ot of summary.overtimes">
+                    {{ot.name}}
+                    <br>
+                    <span class="smallest text-primary">
+                        <span>Time in: {{ot.time_in | date: 'medium'}}</span><br>
+                        <span>Time out: {{ot.time_out | date: 'medium'}}</span>
+                    </span>
+                </li>
+                <li *ngIf="summary.overtimes.length < 1"><i class="text-danger">No filed overtime</i></li>
+            </ul>
+        </div>
+
+        <div class="py-2 border-bottom">
+            <strong>Daily Activity Report: </strong><br>
+            <div *ngFor="let field of summary.dar.data | keyvalue" [hidden]="field.key == 'images'">
+                <strong class="smaller">{{field.key.replace('_', ' ') | titlecase}}:</strong>
+                <ul *ngIf="field.key !== 'images'">
+                    <li>{{field.value ? field.value : 'N/A'}}</li>
+                </ul>
+            </div>
+            <div>
+                <strong class="smaller">Image/s:</strong>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col *ngFor="let image of summary.dar.data.images" size="4">
+                            <img src="data:image/png;base64,{{image.image}}">
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </div>
+        </div>
+    </div>
+    
+</ion-content>

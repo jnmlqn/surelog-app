@@ -1,0 +1,24 @@
+<app-navbar [title]="'HOME'">
+    <ion-refresher slot="fixed" pullFactor="0.5" pullMin="100" pullMax="200" refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div content>
+        <!-- <div class="danger-bg text-light center">
+            No internet connection, displaying cached posts
+        </div> -->
+        <ion-card *ngFor="let post of posts">
+            <ion-avatar class="left p-3">
+                <img src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg">
+            </ion-avatar>
+            
+            <ion-card-header>
+                <ion-card-title>{{post.created_by.name}}</ion-card-title>
+                <ion-card-subtitle>{{post.created_at}}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content [innerText]="post.post"></ion-card-content>
+        </ion-card>
+    <br><br>
+    </div>
+
+</app-navbar>

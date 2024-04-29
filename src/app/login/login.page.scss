@@ -1,0 +1,48 @@
+#first-div {
+	height: 100vh;
+	background-image: url(/assets/imgs/bg.jpg);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.form-control {
+	padding: 15px !important;
+	border-radius: 40px !important;
+	border:  0px;
+	color: white !important;
+	background-color: rgba(104,187,227, .4);
+	text-align: center;
+}
+
+::placeholder {
+	color: white;
+	text-align: center;
+	opacity: .8; /* Firefox */
+}
+
+.logo {
+	min-width: 200px;
+	max-width: 200px;
+}
+
+#login-btn {
+	display: block;
+	width: 100%;
+	padding: 15px;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #01588f !important;
+	background-color: white;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	border-radius: 40px;
+	border: 1px solid white;
+	color:  white;
+}

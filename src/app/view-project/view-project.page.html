@@ -1,0 +1,58 @@
+<ion-content>
+    <div class="big" style="padding: 5px 0 0 10px;">
+        <span (click)="close()">
+            <ion-icon name="close-outline"></ion-icon>
+        </span>
+        <h1><strong>View Project</strong></h1>
+    </div>
+
+    <ion-list>
+        <ion-item>
+            <strong>Project Name: </strong>&nbsp;{{project.name}}
+        </ion-item>
+        <ion-item>
+            <strong>Description: </strong>&nbsp;{{project.description}}
+        </ion-item>
+        <ion-item>
+            <strong>Location: </strong>&nbsp;{{project.location}}
+        </ion-item>
+        <ion-item>
+            <strong>Start Date: </strong>&nbsp;{{project.start_date | date: 'mediumDate'}}
+        </ion-item>
+        <ion-item>
+            <strong>End Date: </strong>&nbsp;{{project.end_date | date: 'mediumDate'}}
+        </ion-item>
+        <ion-item>
+            <strong>Location Offset: </strong>&nbsp;{{project.offset}}
+        </ion-item>
+        <ion-item>
+            <strong>Status: </strong>&nbsp;{{project.status}}
+        </ion-item>
+        <ion-item>
+            <div class="py-2">
+                <strong>Project Authorities:</strong>
+                <ul>
+                    <li *ngFor="let user of project.project_authorities">{{user.user_id.name}}</li>
+                </ul>
+            </div>
+        </ion-item>
+        <ion-item>
+            <div class="py-2">
+                <strong>Project Members:</strong>
+                <ul>
+                    <li *ngFor="let user of project.project_members">{{user.user_id.name}}</li>
+                </ul>
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <br>
+
+    <div class="center">
+        <button class="surelog-btn {{project.active ? 'danger-bg' : 'primary-bg'}}" (click)="activateProject()">
+            <span *ngIf="project.active !== 1">ACTIVATE PROJECT</span>
+            <span *ngIf="project.active == 1">DEACTIVATE PROJECT</span>
+        </button>
+    </div>
+    
+</ion-content>
